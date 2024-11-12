@@ -1,3 +1,9 @@
+/*
+* Priscilla Wettlén
+* AJ6817
+* Systemutvecklare
+* */
+
 package partyController;
 
 import partyView.*;
@@ -48,7 +54,7 @@ public class Controller {
         int index; //variable used in two switch cases below
         switch (button) {
             case Add:
-                JOptionPane.showMessageDialog(null, "Pressed Add"); //remove this line later when you understand how the code works
+                //JOptionPane.showMessageDialog(null, "Pressed Add"); //remove this line later when you understand how the code works
 
                 /* Below are some code to get the information from the fields to the
                    left in the GUI "Guest Information" and display that in the prompt for show.
@@ -73,6 +79,8 @@ public class Controller {
                    that takes the parameters needed for a Guest-object to be created.
                    Let classes GuestManager, Guest and Address handle empty Strings or null values.
                  */
+                register.addGuest(view.getFirstNameText(), view.getLastNameText(), age, view.getStreetText(), view.getCityText(), view.getZipCodeText(), country);
+
                 break;
 
             case Change:
@@ -134,8 +142,8 @@ public class Controller {
     private void updateView(int index) {
         System.out.println("Called updateView in controller with index:"+index); //Can be removed later
         if(validateIndex(index)) {
-            Guest guest = new Guest(); //Remove later when line below is used
-            //Guest guest = register.getGuestAt(index); //ADD CODE HERE by activating this line to see what happens with a null-object and later when method getGuestAt is implemented in class GuestManager
+            // Guest guest = new Guest(); //Remove later when line below is used
+            Guest guest = register.getGuestAt(index); //ADD CODE HERE by activating this line to see what happens with a null-object and later when method getGuestAt is implemented in class GuestManager
             if (guest == null) {
                 JOptionPane.showMessageDialog(null, "The selection did not match a guest");
                 System.out.println("Given index: "+index+ " did not contain a Guest-object");
@@ -146,13 +154,13 @@ public class Controller {
                   referenced by variable guest that returns the value of
                   the instance variable containing the first name.
                  */
-                view.setFirstNameText("Fake first name");
-                view.setLastNameText("Fake last name");
-                view.setAgeText("0"); //remember to convert the datatypes since age is an int in Guest
-                view.setStreetText("Fake street");
-                view.setZipCodeText("Fake zip code");
-                view.setCityText("Fake city");
-                view.setCountriesItem(Countries.Sverige);
+                view.setFirstNameText(guest.getFirstName());
+                view.setLastNameText(guest.getLastName());
+                view.setAgeText(Integer.toString(guest.getAge())); //remember to convert the datatypes since age is an int in Guest
+                view.setStreetText(guest.getStreet());
+                view.setZipCodeText(guest.getZipCode());
+                view.setCityText(guest.getCity());
+                view.setCountriesItem(guest.getCountry());
             }
         }
     }

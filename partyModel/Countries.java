@@ -1,3 +1,9 @@
+/*
+ * Priscilla Wettlén
+ * AJ6817
+ * Systemutvecklare
+ * */
+
 package partyModel;
 
 public enum Countries

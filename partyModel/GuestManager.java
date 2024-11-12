@@ -1,4 +1,11 @@
+/*
+ * Priscilla Wettlén
+ * AJ6817
+ * Systemutvecklare
+ * */
+
 package partyModel;
+import java.util.Scanner;
 
 public class GuestManager {
   /* Keep ONLY the following instance variables for the class:
@@ -18,12 +25,14 @@ public class GuestManager {
      until you get a value that is larger than 0.
    */
   public GuestManager(int maxNbrOfGuests) {
-    if (maxNbrOfGuests > 0) {
-      guestList = new Guest[maxNbrOfGuests];
-    } else {
-      System.out.println("Number of guests must be greater than zero");
+   if(maxNbrOfGuests > 0){
+     guestList = new Guest[maxNbrOfGuests];
+   }else{
+     System.out.println("The maximum number of guest must be greater than 0.");
+   }
+
     }
-  }
+
 
   /* A method that returns the number of guests stored in
      the guest list.
@@ -34,14 +43,31 @@ public class GuestManager {
 
   /* Create a method to add a guest to the list with all the parameters
      matching instance variables of Guest and Address.
+
      In the method create a new Guest-object and let classes Guest and Address
      take care of issues with values of the parameters.
+
      Add the new Guest-object to the array at the first empty element (here is where you
      use the instance variable for number of guests stored in the list). If there are no
      more empty elements call a private method in GuestManager to increase the size
      of the array and then add the new Guest-object. Do not forget to update the value
      of the instance variable for number of guests in the list.
    */
+
+  public Guest[] addGuest(String firstName, String lastName, int age, String street, String city, String zipCode, Countries country){
+    Guest newGuest = new Guest(firstName, lastName, age, street, city, zipCode, country);
+
+    if(guestList.length == nbrOfGuests){
+      //TODO IMPLEMENT THIS
+      System.out.println("Warning! not adding guest");
+    }else{
+      guestList[nbrOfGuests] = newGuest;
+      nbrOfGuests++;
+      System.out.println("adding guest");
+    }
+
+    return guestList;
+  }
 
   /* Create method to delete a guest by giving the index in the array
      for the object (guest) to delete as a parameter to the method.
@@ -72,6 +98,13 @@ public class GuestManager {
 
        You are not allowed to take a shortcut by using class Array or similar from a Java-library.
      */
+    int listSize = guestList.length;
+    for(int i = 0; i < guestList.length; i++){
+      if(nbrOfGuests > listSize){
+        listSize = listSize + 10;
+      }
+    }
+
   }
 
   /* A method that returns the Guest-object at the given
@@ -86,6 +119,10 @@ public class GuestManager {
        on other classes for this, so sometimes we write redundant
        error handling in different ways to have more robust classes or code.
      */
+    if(index <= nbrOfGuests){
+      return guestList[index];
+    }
+
     return null;
   }
 
@@ -98,8 +135,12 @@ public class GuestManager {
        number of guests currently stored in the list.
        (no strings should be created for empty places at the end of the array st)
     */
+    String[] infoStrings = new String[nbrOfGuests];
+    for(int i = 0; i < nbrOfGuests; i++){
+      infoStrings[i] = guestList[i].getFirstName();
+    }
 
-    String[] infoStrings = {"Person 1", "Person 2", "Person 3"}; //Change this to construct an array of String-objects as above
+    //String[] infoStrings = {"wettlen wettlen 1", "Person 2", "Person 3"}; //Change this to construct an array of String-objects as above
 
     return infoStrings;
   }

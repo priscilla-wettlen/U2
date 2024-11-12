@@ -1,3 +1,9 @@
+/*
+ * Priscilla Wettlén
+ * AJ6817
+ * Systemutvecklare
+ * */
+
 package partyModel;
 
 public class Address {
@@ -21,7 +27,7 @@ public class Address {
         this.street = "Default street";
         this.city = "Default city";
         this.zipCode = "000 00";
-        this.country = Countries.valueOf("Default country");
+        this.country = Countries.Unknown;
     }
 
 
@@ -39,10 +45,10 @@ public class Address {
    */
 
     public Address(String street, String city, String zipCode, Countries country){
-       if(street != null && !street.isEmpty()){
-           this.street = street;
-       } else{
+       if(street == null || street.isEmpty()){
            this.street = "Default street";
+       } else{
+           this.street = street;
        }
 
         if(city != null && !city.isEmpty()){
@@ -74,10 +80,10 @@ public class Address {
     }
 
     public void setStreet(String street) {
-        if((street != null && !street.isEmpty())){
-            this.street = street;
-        } else {
+        if((street == null || street.isEmpty())){
             this.street = "Default street";
+        } else {
+            this.street = street;
         }
     }
 

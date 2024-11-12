@@ -1,3 +1,9 @@
+/*
+ * Priscilla Wettlén
+ * AJ6817
+ * Systemutvecklare
+ * */
+
 package partyModel;
 
 public class Guest {
@@ -47,10 +53,10 @@ public class Guest {
      */
 
     public Guest(String firstName, String lastName, int age, Address address) {
-        if(firstName != null && !firstName.isEmpty()){
-            this.firstName = firstName;
-        }else{
+        if(firstName == null || firstName.isEmpty()){
             this.firstName = "Default first name";
+        }else{
+            this.firstName = firstName;
         }
 
         if(lastName != null && !lastName.isEmpty()){
@@ -80,12 +86,11 @@ public class Guest {
        parameters for this object is an empty string or null.
    */
 
-    public Guest(String firstName, String lastName, int age, Address address, String street, String city, String zipCode, Countries country){
+    public Guest(String firstName, String lastName, int age, String street, String city, String zipCode, Countries country){
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.address = address;
-        address = new Address(street, city, zipCode, country);
+        this.address = new Address(street, city, zipCode, country);
 
     }
 
@@ -102,10 +107,10 @@ public class Guest {
     }
 
     public void setFirstName(String firstName) {
-        if((firstName != null && !firstName.isEmpty())){
-            this.firstName = firstName;
-        } else {
+        if((firstName == null || firstName.isEmpty())){
             this.firstName = "Default first name";
+        } else {
+            this.firstName = firstName;
         }
     }
 
