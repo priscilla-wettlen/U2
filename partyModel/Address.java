@@ -129,7 +129,7 @@ public class Address {
    */
 
     public String toString(){
-        return "Street: " + street + ", " + "City: " + city + ", " + "Zip code: " + zipCode + ", " + "Country: " + country;
+        return street + ", " + city + " " + zipCode + ", " + country;
     }
 
 }

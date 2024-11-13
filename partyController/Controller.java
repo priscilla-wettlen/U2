@@ -140,7 +140,7 @@ public class Controller {
        with information from the selected guest.
      */
     private void updateView(int index) {
-        System.out.println("Called updateView in controller with index:"+index); //Can be removed later
+        //System.out.println("Called updateView in controller with index:"+index); //Can be removed later
         if(validateIndex(index)) {
             // Guest guest = new Guest(); //Remove later when line below is used
             Guest guest = register.getGuestAt(index); //ADD CODE HERE by activating this line to see what happens with a null-object and later when method getGuestAt is implemented in class GuestManager

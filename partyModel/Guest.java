@@ -181,7 +181,7 @@ public class Guest {
      */
 
     public String toString(){
-        return "First name: " + firstName + ", " + "Last name: " + lastName + ", " + "Age: "+ age + ", " + "Address: " + address.toString();
+        return firstName +" "+ lastName + " | " +  age + " years old | " + "Address: " + address.toString();
     }
 
 }

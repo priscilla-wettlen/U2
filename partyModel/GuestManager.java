@@ -137,7 +137,7 @@ public class GuestManager {
     */
     String[] infoStrings = new String[nbrOfGuests];
     for(int i = 0; i < nbrOfGuests; i++){
-      infoStrings[i] = guestList[i].getFirstName();
+      infoStrings[i] = guestList[i].toString();
     }
 
     //String[] infoStrings = {"wettlen wettlen 1", "Person 2", "Person 3"}; //Change this to construct an array of String-objects as above
