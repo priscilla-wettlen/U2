@@ -54,7 +54,6 @@ public class Controller {
         int index; //variable used in two switch cases below
         switch (button) {
             case Add:
-                //JOptionPane.showMessageDialog(null, "Pressed Add"); //remove this line later when you understand how the code works
 
                 /* Below are some code to get the information from the fields to the
                    left in the GUI "Guest Information" and display that in the prompt for show.
@@ -64,8 +63,8 @@ public class Controller {
                 System.out.println("Last name: "+view.getLastNameText());
                 System.out.println("Age: "+view.getAgeText());
                 System.out.println("Street: "+view.getStreetText());
-                System.out.println("Zip code: "+view.getZipCodeText());
                 System.out.println("City: "+view.getCityText());
+                System.out.println("Zip code: "+view.getZipCodeText());
 
                 Object item = view.getCountriesItem(); //get the item chosen in the drop-down list of countries, the program handles this as just an Object-object
                 Countries country = (Countries) item; //make it a Countries object - we know that this is supposed to be that, this type of type conversion can be risky
@@ -84,7 +83,7 @@ public class Controller {
                 break;
 
             case Change:
-                JOptionPane.showMessageDialog(null, "Pressed Change"); //remove this line later when you understand how the code works
+                //JOptionPane.showMessageDialog(null, "Pressed Change"); //remove this line later when you understand how the code works
 
                 index = view.getListIndex(); //get the chosen index from the list of guest information from the GUI
                 System.out.println("Want to change guest at index: "+index); //Can be removed later
@@ -98,6 +97,26 @@ public class Controller {
                            In the code above in the Add-choice of the switch-statement
                            you can see how to get the information from the GUI.
                          */
+
+                        String newFirstName = view.getFirstNameText();
+                        String newLastName = view.getLastNameText();
+                        int newAge = convertAge(view.getAgeText());
+                        String newStreet = view.getStreetText();
+                        String newCity = view.getCityText();
+                        String newZipCode = view.getZipCodeText();
+                        item = view.getCountriesItem();
+                        country = (Countries) item;
+                        String newCountry = country.toString();
+
+                        guestToChange.setFirstName(newFirstName);
+                        guestToChange.setLastName(newLastName);
+                        guestToChange.setAge(newAge);
+                        guestToChange.setStreet(newStreet);
+                        guestToChange.setCity(newCity);
+                        guestToChange.setZipCode(newZipCode);
+                        guestToChange.setCounty(country);
+
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Did not find match in list to change");
                     }
@@ -158,8 +177,8 @@ public class Controller {
                 view.setLastNameText(guest.getLastName());
                 view.setAgeText(Integer.toString(guest.getAge())); //remember to convert the datatypes since age is an int in Guest
                 view.setStreetText(guest.getStreet());
-                view.setZipCodeText(guest.getZipCode());
                 view.setCityText(guest.getCity());
+                view.setZipCodeText(guest.getZipCode());
                 view.setCountriesItem(guest.getCountry());
             }
         }
@@ -217,8 +236,8 @@ public class Controller {
         view.setLastNameText("Last name");
         view.setAgeText("0");
         view.setStreetText("Street");
-        view.setZipCodeText("zip code");
         view.setCityText("City");
+        view.setZipCodeText("zip code");
         view.setCountriesItem(Countries.Unknown);
     }
 

@@ -105,9 +105,9 @@ public class Address {
 
     public void setZipCode(String zipCode) {
         if((zipCode != null && !zipCode.isEmpty())){
-            this.city = zipCode;
+            this.zipCode = zipCode;
         } else {
-            this.city = "000 00";
+            this.zipCode = "000 00";
         }
     }
 
