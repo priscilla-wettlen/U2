@@ -57,13 +57,14 @@ public class GuestManager {
   public Guest[] addGuest(String firstName, String lastName, int age, String street, String city, String zipCode, Countries country){
     Guest newGuest = new Guest(firstName, lastName, age, street, city, zipCode, country);
 
-    if(guestList.length == nbrOfGuests){
+    if(nbrOfGuests >= guestList.length){
       //TODO IMPLEMENT THIS
-      System.out.println("Warning! not adding guest");
+      increaseGuestList();
+      guestList[nbrOfGuests] = newGuest;
+      nbrOfGuests++;
     }else{
       guestList[nbrOfGuests] = newGuest;
       nbrOfGuests++;
-      System.out.println("adding guest");
     }
 
     return guestList;
@@ -78,6 +79,27 @@ public class GuestManager {
      number of guests in the list.
    */
 
+  public void removeGuest(int index){
+    if(index != guestList.length - 1){
+      moveElementsToLeft(index);
+      nbrOfGuests--;
+    }else{
+      guestList[index] = null;
+      nbrOfGuests--;
+    }
+
+//    int newLength = guestList.length;
+//    for (int i = 0; i < guestList.length; i++) {
+//      if (i == index) {
+//        moveElementsToLeft(index);
+//        nbrOfGuests--;
+//
+//      }
+//    }
+//    System.out.println(guestList.length);
+
+  }
+
 
   private void moveElementsToLeft(int index){
         /* Add code to remove empty element places that
@@ -87,9 +109,18 @@ public class GuestManager {
 
            You are not allowed to take a shortcut by using class Array or similar from a Java-library.
          */
+
+    for(int i = index; i < guestList.length; i++){
+      guestList[i] = guestList[i + 1];
+    }
+
+    System.out.println("verde");
+
+    // guestList[n] = guestList[n+1]
+    //
   }
 
-  private void increaseGuestList(){
+  private void increaseGuestList() {
     /* Write code that creates a new array of Guest-objects
        that is 10 elements larger that the current array instance variable .
 
@@ -98,12 +129,22 @@ public class GuestManager {
 
        You are not allowed to take a shortcut by using class Array or similar from a Java-library.
      */
-    int listSize = guestList.length;
+    int listSize = guestList.length + 10;
+    Guest[] longerGuestList;
+    longerGuestList = new Guest[listSize];
+
     for(int i = 0; i < guestList.length; i++){
-      if(nbrOfGuests > listSize){
-        listSize = listSize + 10;
-      }
+      longerGuestList[i] = guestList[i];
     }
+      guestList = new Guest[longerGuestList.length];
+      guestList = longerGuestList;
+
+
+    //System.out.println(longerGuestList.length);
+
+
+
+
 
   }
 
@@ -140,7 +181,6 @@ public class GuestManager {
       infoStrings[i] = guestList[i].toString();
     }
 
-    //String[] infoStrings = {"wettlen wettlen 1", "Person 2", "Person 3"}; //Change this to construct an array of String-objects as above
 
     return infoStrings;
   }

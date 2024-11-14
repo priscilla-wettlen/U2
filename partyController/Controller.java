@@ -59,16 +59,16 @@ public class Controller {
                    left in the GUI "Guest Information" and display that in the prompt for show.
                    You can delete this example code later.
                 */
-                System.out.println("First name: "+view.getFirstNameText());
-                System.out.println("Last name: "+view.getLastNameText());
-                System.out.println("Age: "+view.getAgeText());
-                System.out.println("Street: "+view.getStreetText());
-                System.out.println("City: "+view.getCityText());
-                System.out.println("Zip code: "+view.getZipCodeText());
+//                System.out.println("First name: "+view.getFirstNameText());
+//                System.out.println("Last name: "+view.getLastNameText());
+//                System.out.println("Age: "+view.getAgeText());
+//                System.out.println("Street: "+view.getStreetText());
+//                System.out.println("City: "+view.getCityText());
+//                System.out.println("Zip code: "+view.getZipCodeText());
 
                 Object item = view.getCountriesItem(); //get the item chosen in the drop-down list of countries, the program handles this as just an Object-object
                 Countries country = (Countries) item; //make it a Countries object - we know that this is supposed to be that, this type of type conversion can be risky
-                System.out.println("Country: "+country.toString());
+                //System.out.println("Country: "+country.toString());
 
                 int age = convertAge(view.getAgeText()); //get the text from interface for age and convert to int
                 // example code end here
@@ -83,10 +83,7 @@ public class Controller {
                 break;
 
             case Change:
-                //JOptionPane.showMessageDialog(null, "Pressed Change"); //remove this line later when you understand how the code works
-
                 index = view.getListIndex(); //get the chosen index from the list of guest information from the GUI
-                System.out.println("Want to change guest at index: "+index); //Can be removed later
                 if (validateIndex(index)) { //validateIndex is a private method in this class
                     Guest guestToChange = register.getGuestAt(index); //get what is hopefully the matching Guest-object to the one chosen one in the GUI
                     if (guestToChange != null){
@@ -124,13 +121,14 @@ public class Controller {
                 break;
 
             case Delete:
-                JOptionPane.showMessageDialog(null, "Pressed Delete"); //remove this line later when you understand how the code works
+                //JOptionPane.showMessageDialog(null, "Pressed Delete"); //remove this line later when you understand how the code works
                 index = view.getListIndex();
-                System.out.println("When pressed delete we got index: "+index); //Can be removed later
+                //System.out.println("When pressed delete we got index: "+index); //Can be removed later
                 if (validateIndex(index)) {
                     /*
                      ADD CODE HERE that calls the method to delete an item for the GuestManager-object register
                     */
+                    register.removeGuest(index);
                 }
                 break;
             case Statistics:
