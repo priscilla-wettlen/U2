@@ -110,14 +110,10 @@ public class GuestManager {
            You are not allowed to take a shortcut by using class Array or similar from a Java-library.
          */
 
-    for(int i = index; i < guestList.length; i++){
+    for(int i = index; i < guestList.length -1; i++){
       guestList[i] = guestList[i + 1];
     }
 
-    System.out.println("verde");
-
-    // guestList[n] = guestList[n+1]
-    //
   }
 
   private void increaseGuestList() {
@@ -136,7 +132,6 @@ public class GuestManager {
     for(int i = 0; i < guestList.length; i++){
       longerGuestList[i] = guestList[i];
     }
-      guestList = new Guest[longerGuestList.length];
       guestList = longerGuestList;
 
 
