@@ -121,9 +121,7 @@ public class Controller {
                 break;
 
             case Delete:
-                //JOptionPane.showMessageDialog(null, "Pressed Delete"); //remove this line later when you understand how the code works
                 index = view.getListIndex();
-                //System.out.println("When pressed delete we got index: "+index); //Can be removed later
                 if (validateIndex(index)) {
                     /*
                      ADD CODE HERE that calls the method to delete an item for the GuestManager-object register

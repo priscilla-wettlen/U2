@@ -5,6 +5,7 @@
  * */
 
 package partyModel;
+import javax.swing.*;
 import java.util.Scanner;
 
 public class GuestManager {
@@ -25,11 +26,16 @@ public class GuestManager {
      until you get a value that is larger than 0.
    */
   public GuestManager(int maxNbrOfGuests) {
-   if(maxNbrOfGuests > 0){
-     guestList = new Guest[maxNbrOfGuests];
-   }else{
-     System.out.println("The maximum number of guest must be greater than 0.");
-   }
+    boolean isValidInput = false;
+    while(!isValidInput){
+      if(maxNbrOfGuests <= 0){
+        JOptionPane.showMessageDialog(null, "Error: Number of guests must be greater than 0");
+      } else{
+        guestList = new Guest[maxNbrOfGuests];
+        isValidInput = true;
+      }
+
+    }
 
     }
 
@@ -88,16 +94,6 @@ public class GuestManager {
       nbrOfGuests--;
     }
 
-//    int newLength = guestList.length;
-//    for (int i = 0; i < guestList.length; i++) {
-//      if (i == index) {
-//        moveElementsToLeft(index);
-//        nbrOfGuests--;
-//
-//      }
-//    }
-//    System.out.println(guestList.length);
-
   }
 
 
@@ -133,12 +129,6 @@ public class GuestManager {
       longerGuestList[i] = guestList[i];
     }
       guestList = longerGuestList;
-
-
-    //System.out.println(longerGuestList.length);
-
-
-
 
 
   }

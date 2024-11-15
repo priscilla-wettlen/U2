@@ -8,6 +8,7 @@ package partyController;
 
 import partyModel.GuestManager;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class MainProgram
@@ -27,7 +28,8 @@ public class MainProgram
         while(!isValidInput){
             System.out.println("How many guests would you like to have?");
             if (!input.hasNextInt()) {
-                System.out.println("ERROR: Please enter a valid number.");
+                JOptionPane.showMessageDialog(null, "Error: Number of guests must be greater than 0");
+                //System.out.println("ERROR: Please enter a valid number.");
                 input.next();
                 continue;
             }
@@ -35,8 +37,8 @@ public class MainProgram
             maxNbrOfGuests = input.nextInt();
 
             if(maxNbrOfGuests <= 0){
-                System.out.println("ERROR: Number of guests must be greater than 0.");
-                continue;
+                JOptionPane.showMessageDialog(null, "Error: Number of guests must be greater than 0");
+                //System.out.println("ERROR: Number of guests must be greater than 0.");
             } else{
                 isValidInput = true;
             }
